@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    startGame();
+
+    function startGame() {
+        let randomNumber = getRandomInt(1, 10);
+        playGame(3, randomNumber);
+    }
+
+    function playGame(maxTries, randomNumber) {
+
+        if (maxTries == 0) {
+            alert('You lose');
+            startGame();
+        }
+
+        alert('Try to discover the random number between 1 and 10');
+        alert('Pay attention, you only have ' + maxTries + ' tries to do this');
+
+        let currentTry = prompt('Just try');
+
+        if (maxTries >= 1) {
+            if (tryToDiscover(randomNumber, currentTry)) {
+                alert('Congratulations, you got the number right');
+            }
+            playGame(maxTries - 1);
+        }
+    }
+
+    function tryToDiscover(valueToBeDiscovered, tryValue)
+    {
+        return tryValue == valueToBeDiscovered;
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+</script>   
